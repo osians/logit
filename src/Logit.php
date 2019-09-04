@@ -4,13 +4,14 @@ namespace Osians\Logit;
 use DateTime;
 use RuntimeException;
 use Osians\Logit\LogLevel;
+use \Osians\Logit\LogitAbstract;
 
 /**
  *    Gerenciamento de Log
  *
  *    Uso:
  *    $log = new Osians\Logit\Logit('/var/log/', Osians\Logit\LogLevel::INFO);
- *    $log->info('Informação a Logar');
+ *    $log->info('InformaÃ§Ã£o a Logar');
  *    $log->error('Whoops!');
  *    $log->debug('x = 5');
  *
@@ -19,7 +20,7 @@ use Osians\Logit\LogLevel;
  *    @link    https://github.com/osians/logit
  *    @version 1.0.1
  */
-class Logit
+class Logit extends LogitAbstract
 {
     /**
      *  Logit options

@@ -3,7 +3,7 @@
 namespace Osians\Logit;
 
 /**
- *    Descrição do Nível de Logs
+ *    DescriÃ§Ã£o do NÃ­vel de Logs
  */
 class LogLevel
 {
