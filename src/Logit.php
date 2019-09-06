@@ -3,14 +3,14 @@ namespace Osians\Logit;
 
 use DateTime;
 use RuntimeException;
-use Osians\Logit\LogLevel;
+use Osians\Logit\LogitLevel;
 use \Osians\Logit\LogitAbstract;
 
 /**
  *    Gerenciamento de Log
  *
  *    Uso:
- *    $log = new Osians\Logit\Logit('/var/log/', Osians\Logit\LogLevel::INFO);
+ *    $log = new Osians\Logit\Logit('/var/log/', Osians\Logit\LogitLevel::INFO);
  *    $log->info('Informação a Logar');
  *    $log->error('Whoops!');
  *    $log->debug('x = 5');
@@ -51,7 +51,7 @@ class Logit extends LogitAbstract
      * Current minimum logging threshold
      * @var integer
      */
-    protected $logLevelThreshold = LogLevel::DEBUG;
+    protected $logitLevelThreshold = LogitLevel::DEBUG;
 
     /**
      * The number of lines logged in this instance's lifetime
@@ -63,15 +63,15 @@ class Logit extends LogitAbstract
      * Log Levels
      * @var array
      */
-    protected $logLevels = array(
-        LogLevel::EMERGENCY => 0,
-        LogLevel::ALERT     => 1,
-        LogLevel::CRITICAL  => 2,
-        LogLevel::ERROR     => 3,
-        LogLevel::WARNING   => 4,
-        LogLevel::NOTICE    => 5,
-        LogLevel::INFO      => 6,
-        LogLevel::DEBUG     => 7
+    protected $logitLevels = array(
+        LogitLevel::EMERGENCY => 0,
+        LogitLevel::ALERT     => 1,
+        LogitLevel::CRITICAL  => 2,
+        LogitLevel::ERROR     => 3,
+        LogitLevel::WARNING   => 4,
+        LogitLevel::NOTICE    => 5,
+        LogitLevel::INFO      => 6,
+        LogitLevel::DEBUG     => 7
     );
 
     /**
@@ -97,15 +97,15 @@ class Logit extends LogitAbstract
      * Class constructor
      *
      * @param string $logDirectory      File path to the logging directory
-     * @param string $logLevelThreshold The LogLevel Threshold
+     * @param string $logitLevelThreshold The LogitLevel Threshold
      * @param array  $options
      *
      * @internal param string $logFilePrefix The prefix for the log file name
      * @internal param string $logFileExt The extension for the log file
      */
-    public function __construct($logDirectory, $logLevelThreshold = LogLevel::DEBUG, array $options = array())
+    public function __construct($logDirectory, $logitLevelThreshold = LogitLevel::DEBUG, array $options = array())
     {
-        $this->logLevelThreshold = $logLevelThreshold;
+        $this->logitLevelThreshold = $logitLevelThreshold;
         $this->options = array_merge($this->options, $options);
 
         $logDirectory = rtrim($logDirectory, DIRECTORY_SEPARATOR);
@@ -185,11 +185,11 @@ class Logit extends LogitAbstract
     /**
      * Sets the Log Level Threshold
      *
-     * @param string $logLevelThreshold The log level threshold
+     * @param string $logitLevelThreshold The log level threshold
      */
-    public function setLogLevelThreshold($logLevelThreshold)
+    public function setLogitLevelThreshold($logitLevelThreshold)
     {
-        $this->logLevelThreshold = $logLevelThreshold;
+        $this->logitLevelThreshold = $logitLevelThreshold;
     }
 
     /**
@@ -202,7 +202,7 @@ class Logit extends LogitAbstract
      */
     public function log($level, $message, array $context = array())
     {
-        if ($this->logLevels[$this->logLevelThreshold] < $this->logLevels[$level]) {
+        if ($this->logitLevels[$this->logitLevelThreshold] < $this->logitLevels[$level]) {
             return;
         }
         $message = $this->formatMessage($level, $message, $context);
@@ -266,7 +266,7 @@ class Logit extends LogitAbstract
                 'date'          => $this->getTimestamp(),
                 'level'         => strtoupper($level),
                 'level-padding' => str_repeat(' ', 9 - strlen($level)),
-                'priority'      => $this->logLevels[$level],
+                'priority'      => $this->logitLevels[$level],
                 'message'       => $message,
                 'context'       => json_encode($context),
             );

@@ -3,9 +3,9 @@
 namespace Osians\Logit;
 
 /**
- *    Descrição do Nível de Logs
+ *    Descrição do nível de Logs
  */
-class LogLevel
+class LogitLevel
 {
     const EMERGENCY = 'emergency';
     const ALERT     = 'alert';
