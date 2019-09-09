@@ -1,0 +1,2 @@
+[2019-09-09 16:46:36.454735] [debug] This is a test
+[2019-09-09 17:44:30.884476] [debug] This is a test

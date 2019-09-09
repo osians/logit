@@ -1,10 +1,5 @@
 <?php
 
-require_once __DIR__ . '/../src/LogitLevel.php';
-require_once __DIR__ . '/../src/LogitInterface.php';
-require_once __DIR__ . '/../src/LogitAbstract.php';
-require_once __DIR__ . '/../src/Logit.php';
-
 use Osians\Logit\Logit;
 use Osians\Logit\LogitLevel;
 use PHPUnit\Framework\TestCase;
